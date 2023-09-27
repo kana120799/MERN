@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-
 function App() {
   const [formData, setFormData] = useState({
     name: "",
@@ -13,8 +12,9 @@ function App() {
   };
   const generatePDF = async () => {
     try {
+      console.log("dhasvda", process.env.REACT_APP_BASEURL);
       const response = await axios.post(
-        "http://localhost:5000/generate",
+        `${process.env.REACT_APP_BASEURL}/generate`,
         formData,
         {
           responseType: "blob",
